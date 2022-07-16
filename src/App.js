@@ -1,25 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import IndexRouter from "./router/IndexRouter"
+import { Provider, provider } from 'react-redux'
+import './App.css'
+import './util/http'
+import {store, persistor} from "./redux/staore"
+import { PersistGate } from 'redux-persist/es/integration/react'
+export default function App() {
+  return <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
+    <IndexRouter></IndexRouter>
+    </PersistGate>
+  </Provider>
 }
-
-export default App;
